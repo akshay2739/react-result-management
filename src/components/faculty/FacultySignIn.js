@@ -18,4 +18,4 @@ class FacultySignIn extends Component {
     }
 }
 
-export default FacultySignIn;
+export default FacultySignIn

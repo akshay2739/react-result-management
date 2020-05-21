@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+//import { NavLink } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useParams,
+    useRouteMatch
+  } from "react-router-dom";
 
-class Navbar extends Component {
-    render() {
+  const Navbar = (props) => {
+
+        let { path, url } = useRouteMatch()
         return (
             <div className="nav-bar">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <NavLink className="nav-bar brand nav-link" to="/" >Akshay</NavLink>
+                    <Link className="nav-bar brand nav-link" to="/" >Akshay</Link>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
-                            <li className="nav-item active">
-                                <NavLink to="/signin" className="nav-link" >Sign in</NavLink>
+                            <li>
+                                <Link to={`${url}${props.signin}`}>sign in</Link>
                             </li>
-                            <li className="nav-item">
-                                <NavLink to="/signup"className="nav-link" >Sign up</NavLink>
+                            <li>
+                                <Link to={`${url}${props.signup}`}>Sign up</Link>
                             </li>
                         </ul>
                     </div>
@@ -21,6 +30,6 @@ class Navbar extends Component {
             </div>
         );
     }
-}
+
 
 export default Navbar;
