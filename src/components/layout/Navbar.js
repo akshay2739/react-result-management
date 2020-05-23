@@ -14,15 +14,18 @@ import {
         let { path, url } = useRouteMatch()
         return (
             <div className="nav-bar">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <Link className="nav-bar brand nav-link" to="/" >Akshay</Link>
+                <nav className="navbar navbar-expand-lg navbar-light bg-dark ">
+                    <Link className="nav-bar brand nav-link text-white" to="/" >Akshay</Link>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li>
-                                <Link to={`${url}${props.signin}`}>sign in</Link>
+                                <Link to={`${url}${props.signin}`} className="nav-link text-white">Sign in</Link>
                             </li>
                             <li>
-                                <Link to={`${url}${props.signup}`}>Sign up</Link>
+                                <Link to={`${url}${props.signup}`} className="nav-link text-white">Sign up</Link>
+                            </li>
+                            <li>
+
                             </li>
                         </ul>
                     </div>

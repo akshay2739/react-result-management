@@ -3,15 +3,19 @@ import React, { Component } from 'react';
 class FacultySignIn extends Component {
     render() {
         return (
-            <div>
-                <form action="" onSubmit={this.handleSubmit} className="w-50 p-10">
-                    <div className="form-group  bg-dark text-white">
-                        <label htmlFor="">Email</label>
-                        <input type="text" id="email" onChange={this.handleChange} className="form-control"/>
-                        <label htmlFor="">password</label>
-                        <input type="text" id="password" onChange={this.handleChange} className="form-control"/>
-                        <button type="submit" className="btn btn-primary">Submit</button>
+            <div className="w-50 mx-auto shadow-lg mt-5 d-flex justify-content-center">
+                <form className="p-1 w-50 ">
+                    <div className="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        
                     </div>
+                    <div className="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" className="form-control" id="exampleInputPassword1" />
+                    </div>
+                    
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
         );
