@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Navbar from '../layout/Navbar'
-//import { BrowserRouter, Switch, Route, useRouteMatch } from 'react-router-dom';
 import AdminSignUp from './AdminSignUp'
 import AdminSignIn from './AdminSignIn'
+import AdminHome from './AdminHome'
 import {
-    BrowserRouter ,
     Switch,
     Route,
     useRouteMatch
   } from "react-router-dom";
-const AdminDashboard = () => {
+import { connect } from 'react-redux';
+const AdminDashboard = (props) => {
         
-    let { path } = useRouteMatch();
-
+    let { path } = useRouteMatch();    
+    
     return (
         <div>
             <Navbar signin='/adminsignin' signup='/adminsignup'/>
             <Switch>
-                <Route exact path={path}><p>Admin Dashboard</p></Route>
+                <Route exact path={path} component={AdminHome}/>
                 <Route path={`${path}/adminsignin`} component={AdminSignIn} />
                 <Route path={`${path}/adminsignup`} component={AdminSignUp} />
             </Switch>
@@ -25,18 +25,10 @@ const AdminDashboard = () => {
     );
 }
 
+const mapStateToProps = (state) => {
+    return{
+        firebase:state.firebase
+    }
+}
 
-export default AdminDashboard;
-
-// let { path } = useRouteMatch()
-//     return (
-//                 <BrowserRouter>
-//                     <Navbar signin="/adminsignin" signup="/adminsignup"/>
-//                     <Switch>
-//                         <Route exact path={path}><p>Admin Dashboard</p></Route>
-//                         <Route path={`${path}/adminsignin`} component={AdminSignIn} />
-//                         <Route path={`${path}/adminsignup`} component={AdminSignUp} />
-//                     </Switch>
-//                 </BrowserRouter>
-                
-//         );
+export default connect(mapStateToProps)(AdminDashboard)

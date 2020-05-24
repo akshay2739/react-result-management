@@ -8,7 +8,6 @@ class Home extends Component {
     }
 
     handleClick = (e) => {
-        console.log(e.target.id)
         this.setState({
             link:e.target.id
         })

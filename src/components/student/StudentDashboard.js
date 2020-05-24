@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Navbar from '../layout/Navbar'
 import StudentSignIn from './StudentSignIn'
 import StudentSignUp from './StudentSignUp'
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   useRouteMatch

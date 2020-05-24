@@ -1,17 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 //import { NavLink } from 'react-router-dom';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link,
-    useParams,
     useRouteMatch
   } from "react-router-dom";
+import { connect } from 'react-redux';
+import { signOutAction } from '../../store/Actions/AuthAction'
+
+  
 
   const Navbar = (props) => {
 
-        let { path, url } = useRouteMatch()
+    const handleClick = () => {
+        props.signout()
+    }
+
+        let { url } = useRouteMatch()
         return (
             <div className="nav-bar">
                 <nav className="navbar navbar-expand-lg navbar-light bg-dark ">
@@ -25,14 +29,22 @@ import {
                                 <Link to={`${url}${props.signup}`} className="nav-link text-white">Sign up</Link>
                             </li>
                             <li>
-
+                                <button className="nav-link text-white bg-dark border-0" onClick ={handleClick} >Sign out</button>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
-        );
+        );  
     }
 
 
-export default Navbar;
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        signout: () => dispatch(signOutAction())
+    }
+}
+
+export default connect(null,mapDispatchToProps)(Navbar)
+
