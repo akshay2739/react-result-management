@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Redirect, NavLink } from 'react-router-dom'
 
 class AdminHome extends Component {
-    render() {
-        
-        console.log(this.props.auth.uid)
+    
+    
+    render() {    
+        //console.log(this.props.auth.uid)
         if(!this.props.auth.uid){
             return(
                 <Redirect to="admindashboard/adminsignin" />
@@ -15,6 +16,7 @@ class AdminHome extends Component {
         return (
             <div>
                 <p>Admin Home</p>
+                <NavLink to="admindashboard/facultylist">Facilty list</NavLink>
             </div>
         )
     }
