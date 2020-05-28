@@ -5,7 +5,7 @@ export default class Faculty extends Component {
        // console.log(this.props.faculty)
         return (
             <div>
-                <p>{this.props.faculty.name}</p>
+                <p>{this.props.faculty.email}</p>
             </div>
         )
     }

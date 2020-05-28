@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom'
 
+
 class AdminHome extends Component {
     
     
@@ -17,6 +18,8 @@ class AdminHome extends Component {
             <div>
                 <p>Admin Home</p>
                 <NavLink to="admindashboard/facultylist">Facilty list</NavLink>
+                <br/>
+                <NavLink to="admindashboard/addfaculty">Add faculty</NavLink>
             </div>
         )
     }

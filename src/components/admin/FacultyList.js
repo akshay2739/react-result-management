@@ -5,37 +5,24 @@ import { firestoreConnect } from 'react-redux-firebase'
 import Faculty from './Faculty'
 import * as firebase from 'firebase'
 class FacultyList extends Component {
-    teachers = []
     
-    componentDidMount(){
-        firebase.firestore().collection('admins').doc('ibm1IBoUnN9PI66txt4I').get()
-        .then(
-            (doc) => {
-             // console.log( doc.data().teachers)
-             for(var i=0;i<doc.data().teachers.length;i++){
-                this.teachers.push(doc.data().teachers[i])
-             }
-              
-              
-            }
-        )
-    }
 
     render() {
-        const admins = this.props.admins
+       const faculties = this.props.faculties
         
-        console.log(admins)
+        //console.log(this.props.faculties)
         return (
             <div>
                 {
-                    admins && admins.map(
-                        (admin) => {
+                    faculties && faculties.map(
+                        (faculty) => {
                             return(
-                                <Faculty key={admin.name} faculty={admin} />
+                                <Faculty key={faculty.email} faculty={faculty} />
                             )
                         }
                     )
                 }
+                
             </div>
         )
     }
@@ -43,18 +30,25 @@ class FacultyList extends Component {
 
 const mapStateToProps = (state) => {
     return{
-        admins:state.firestore.ordered.faculti
+        auth: state.firebase.auth,
+        faculties:state.firestore.ordered.faculties,
+        
     }
 }
 
 export default compose(
-    firestoreConnect([
-        {
-            collection:'admins',
-            doc:'PrssE3dsj86j1nm9V9OX',
-            subcollections:[{collection:'faculties'}],
-            storeAs:'faculti'
-        
-    },
-    ]),connect(mapStateToProps)
+    connect(mapStateToProps),
+    firestoreConnect(
+        props => {
+            console.log(props.auth.uid)
+            return [
+                {
+                    collection:'admins',
+                    doc:props.auth.uid,
+                    subcollections:[{collection:'faculties'}],
+                    storeAs:'faculties'
+            },
+            ]
+        }
+    )
     )(FacultyList)

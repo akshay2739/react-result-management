@@ -4,6 +4,7 @@ import AdminSignUp from './AdminSignUp'
 import AdminSignIn from './AdminSignIn'
 import AdminHome from './AdminHome'
 import FacultyList from './FacultyList'
+import AddFaaculty from './AddFaculty'
 import {
     Switch,
     Route,
@@ -22,6 +23,7 @@ const AdminDashboard = (props) => {
                 <Route path={`${path}/adminsignin`} component={AdminSignIn} />
                 <Route path={`${path}/adminsignup`} component={AdminSignUp} />
                 <Route path={`${path}/facultylist`} component={FacultyList} />
+                <Route path={path+'/addfaculty'} component={AddFaaculty} />
             </Switch>
         </div>
     );
