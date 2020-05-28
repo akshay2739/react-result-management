@@ -13,13 +13,13 @@ import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
 import 'firebase/firestore'
-import { createFirestoreInstance,reduxFirestore } from 'redux-firestore';
+import { createFirestoreInstance,reduxFirestore, getFirestore } from 'redux-firestore';
 
 
 firebase.initializeApp(fbconfig)
 firebase.firestore()
 
-const store = createStore(RootReducer, compose(applyMiddleware(thunk.withExtraArgument({getFirebase})),reduxFirestore(firebase,fbconfig)))
+const store = createStore(RootReducer, compose(applyMiddleware(thunk.withExtraArgument({getFirebase,getFirestore})),reduxFirestore(firebase,fbconfig)))
 
 const rrfConfig = {
   userProfile : 'users',
@@ -32,7 +32,6 @@ const rrfProps = {
   dispatch:store.dispatch,
   createFirestoreInstance
 }
-
 ReactDOM.render(
 
     <Provider store={store}>

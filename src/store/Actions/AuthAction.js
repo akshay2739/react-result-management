@@ -27,3 +27,26 @@ export const signOutAction = () => {
         )
     }
 }
+
+export const signUpAction = (credential) => {
+    return(dispatch,getstate,{getFirebase,getFirestore}) => {
+        const firebase = getFirebase()
+        const firestore = getFirestore()
+        firebase.auth().createUserWithEmailAndPassword(
+            credential.email,
+            credential.password
+        ).then(
+            (resp) => {
+                firestore.collection('admins').doc(resp.user.uid).set({
+                    schoolcode:credential.schoolcode
+                })
+            }
+        ).then(
+            console.log('user created')
+        ).catch(
+            (err) => {
+                console.log(err)
+            }
+        )
+    }
+}
