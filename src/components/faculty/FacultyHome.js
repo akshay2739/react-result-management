@@ -16,6 +16,8 @@ class FacultyHome extends Component {
                 <NavLink to="facultydashboard/addsubject" >Add subject </NavLink>
                 <br/>
                 <NavLink to="facultydashboard/subjectlist" > Subject List </NavLink>
+                <br/>
+                <NavLink to="facultydashboard/studentlist">Student list</NavLink>
             </div>
         );
     }

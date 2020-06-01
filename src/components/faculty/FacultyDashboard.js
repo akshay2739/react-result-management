@@ -5,6 +5,7 @@ import FacultySignIn from './FacultySignIn'
 import FacultyHome from './FacultyHome'
 import AddSubject from './AddSubject'
 import SubjectList from './SubjectList'
+import StudentList from './StudentList'
 import { connect } from 'react-redux'
 
 
@@ -24,6 +25,7 @@ const FacultyDashboard = (props) => {
                         <Route path={`${path}/facultysignin`} component={FacultySignIn} />
                         <Route path={path+'/addsubject'} component={AddSubject} />
                         <Route path={path+'/subjectlist'} component={SubjectList} />
+                        <Route path={path+'/studentlist'} component={StudentList}  />
                     </Switch>
             </div> 
         )

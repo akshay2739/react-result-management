@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addSubjectAction } from '../../store/Actions/FacultyAction'
 
-export default class AddSubject extends Component {
+class AddSubject extends Component {
     
     state = {
         subjectcode:'',
@@ -15,10 +17,12 @@ export default class AddSubject extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state)
+        this.props.addsubject(this.state,this.props.adminId,this.props.facultyId)
+        // console.log(this.state)
     }
     
     render() {
+        console.log(this.props.facultyId)
         return (
             <div className="w-50 mx-auto shadow-lg mt-5 d-flex justify-content-center">
             <form className="p-1 w-50 " onSubmit = {this.handleSubmit}>
@@ -39,3 +43,18 @@ export default class AddSubject extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return{
+        facultyId:state.faculty.facultyId,
+        adminId:state.faculty.adminId
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        addsubject: (creds,adminId,facultyId) => dispatch(addSubjectAction(creds,adminId,facultyId))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps) (AddSubject)

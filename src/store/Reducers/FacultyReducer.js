@@ -1,5 +1,7 @@
 const initstate = {
-    loggedIn : false
+    loggedIn : false,
+    adminId:'',
+    facultyId:''
 }
 
 const FacultyReducer = (state = initstate , action) => {
@@ -9,7 +11,9 @@ const FacultyReducer = (state = initstate , action) => {
             console.log('Signed in')
             return{
                 ...state,
-                loggedIn:action.loggedin
+                loggedIn:action.loggedin,
+                adminId:action.adminId,
+                facultyId:action.facultyId
             }
         default:
             return state
