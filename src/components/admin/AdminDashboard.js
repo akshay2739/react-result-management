@@ -5,6 +5,7 @@ import AdminSignIn from './AdminSignIn'
 import AdminHome from './AdminHome'
 import FacultyList from './FacultyList'
 import AddFaaculty from './AddFaculty'
+import AddStudents from './AddStudents'
 import {
     Switch,
     Route,
@@ -14,7 +15,6 @@ import { connect } from 'react-redux';
 const AdminDashboard = (props) => {
         
     let { path } = useRouteMatch();    
-    
     return (
         <div>
             <Navbar signin='/adminsignin' signup='/adminsignup'/>
@@ -24,6 +24,7 @@ const AdminDashboard = (props) => {
                 <Route path={`${path}/adminsignup`} component={AdminSignUp} />
                 <Route path={`${path}/facultylist`} component={FacultyList} />
                 <Route path={path+'/addfaculty'} component={AddFaaculty} />
+                <Route path={path+'/addstudent'} component={AddStudents} />
             </Switch>
         </div>
     );
@@ -31,7 +32,8 @@ const AdminDashboard = (props) => {
 
 const mapStateToProps = (state) => {
     return{
-        firebase:state.firebase
+        firebase:state.firebase,
+        admin:state.admin
     }
 }
 

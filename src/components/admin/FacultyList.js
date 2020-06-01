@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import Faculty from './Faculty'
-import * as firebase from 'firebase'
 class FacultyList extends Component {
     
 
@@ -40,7 +39,7 @@ export default compose(
     connect(mapStateToProps),
     firestoreConnect(
         props => {
-            console.log(props.auth.uid)
+            
             return [
                 {
                     collection:'admins',

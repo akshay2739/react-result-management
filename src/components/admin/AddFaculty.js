@@ -18,11 +18,12 @@ class AddFaculty extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         //console.log(this.props)
-        console.log(this.props.auth.uid)
+        //console.log(this.props.auth.uid)
         this.props.addfaculty(this.state,this.props.auth.uid)
     }
     
     render() {
+        //console.log(this.props.profile)
         return (
             <div className="w-50 mx-auto shadow-lg mt-5 d-flex justify-content-center">
                 <form className="p-1 w-50 " onSubmit={this.handleSubmit}>
@@ -45,7 +46,8 @@ class AddFaculty extends Component {
 
 const mapStateToProps = (state) => {
     return{
-        auth:state.firebase.auth
+        auth:state.firebase.auth,
+        profile:state.firebase.profile
     }
 }
 

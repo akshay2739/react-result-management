@@ -22,7 +22,7 @@ firebase.firestore()
 const store = createStore(RootReducer, compose(applyMiddleware(thunk.withExtraArgument({getFirebase,getFirestore})),reduxFirestore(firebase,fbconfig)))
 
 const rrfConfig = {
-  userProfile : 'users',
+  userProfile : 'admins',
   useFirestoreForProfile : true
 }
 
@@ -30,7 +30,9 @@ const rrfProps = {
   firebase,
   config:rrfConfig,
   dispatch:store.dispatch,
-  createFirestoreInstance
+  createFirestoreInstance,
+  presence: 'presence',
+  sessions: 'sessions'
 }
 ReactDOM.render(
 

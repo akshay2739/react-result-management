@@ -7,7 +7,8 @@ class AdminSignIn extends Component {
     
     state = {
         email:'',
-        password:''
+        password:'',
+        schoolcode:''
     }
     
     handleChange = (e) => {
@@ -31,6 +32,7 @@ class AdminSignIn extends Component {
         return (
             <div className="w-50 mx-auto shadow-lg mt-5 d-flex justify-content-center">
                 <form className="p-1 w-50 " onSubmit={this.handleSubmit}>
+                    
                     <div className="form-group">
                         <label >Email address</label>
                         <input type="email" id="email"className="form-control"  aria-describedby="emailHelp" onChange={this.handleChange}/>

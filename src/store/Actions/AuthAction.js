@@ -42,7 +42,7 @@ export const signUpAction = (credential) => {
                 })
             }
         ).then(
-            console.log('user created')
+            dispatch({type:'SIGNUP'})
         ).catch(
             (err) => {
                 console.log(err)

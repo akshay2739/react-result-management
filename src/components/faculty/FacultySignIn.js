@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { signInAction } from '../../store/Actions/AuthAction'
+import { facultySignIn } from '../../store/Actions/FacultyAction'
 import { Redirect } from 'react-router-dom';
+
 
 class FacultySignIn extends Component {
     
     state = {
+        schoolcode:'',
         email:'',
         password:''
     }
@@ -23,15 +25,20 @@ class FacultySignIn extends Component {
 
     render() {
 
-        if(this.props.auth.uid){
+        if(this.props.faculty.loggedIn){
             return(
-                <Redirect to="/facultydashboard" />
+                <Redirect to="/facultydashboard"/>
             )
         }
 
         return (
             <div className="w-50 mx-auto shadow-lg mt-5 d-flex justify-content-center">
                 <form className="p-1 w-50 " onSubmit = {this.handleSubmit}>
+                    <div className="form-group">
+                        <label >School code</label>
+                        <input type="text" className="form-control" id="schoolcode" aria-describedby="emailHelp" onChange={this.handleChange}/>
+                        
+                    </div>
                     <div className="form-group">
                         <label >Email address</label>
                         <input type="email" className="form-control" id="email" aria-describedby="emailHelp" onChange={this.handleChange}/>
@@ -51,13 +58,14 @@ class FacultySignIn extends Component {
 
 const mapStateToProps = (state) => {
     return{
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        faculty: state.faculty
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        signin : (credential) => dispatch(signInAction(credential))
+        signin : (credential) => dispatch(facultySignIn(credential))
     }
 }
 

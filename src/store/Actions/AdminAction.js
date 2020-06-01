@@ -1,16 +1,16 @@
 export const addFacultyAction = (creds,uid) => {
     return (dispatch,getState,{getFirebase,getFirestore}) => {
-        const firebase = getFirebase()
+        
         const firestore = getFirestore()
-        firestore.collection('admins').doc(uid).collection('faculties').add(
+        firestore.collection('admins').doc(uid).collection('faculties').doc(creds.email).set(
             {
                 email:creds.email,
                 password:creds.password
             }
         ).then(
-            (docRef) => {
+            () => {
                 console.log('faculty added')
-                firestore.collection('faaculties').doc(docRef.id).set({
+                firestore.collection('faculties').doc(creds.email).set({
 
                 })
                 //console.log('faculty added',docRef.id)
@@ -20,5 +20,26 @@ export const addFacultyAction = (creds,uid) => {
         )      
         
        // console.log(uid)
+    }
+}
+
+export const addStudentAction = (creds, uid) => {
+    return (dispatch,getState,{getFirebase,getFirestore}) => {
+        const firestore = getFirestore()
+
+        firestore.collection('admins').doc(uid).collection('students').doc(creds.idno).set(
+            {
+                idno:creds.idno,
+                password:creds.password,
+                year:creds.year,
+                branch:creds.branch
+            }
+        )
+        .then(
+            console.log('student added')
+        )
+        .catch(
+            (err) => console.log('error')
+        )
     }
 }
