@@ -1,10 +1,10 @@
-const initstate = {
+const initState = {
     loggedIn : false,
     adminId:'',
     facultyId:''
 }
 
-const FacultyReducer = (state = initstate , action) => {
+const FacultyReducer = (state = initState , action) => {
     switch(action.type){
         
         case 'SIGNIN_SUCCESS':

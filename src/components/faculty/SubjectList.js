@@ -2,15 +2,29 @@ import React, { Component } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
+import Subject from './Subject'
+import { NavLink } from 'react-router-dom'
 
 class SubjectList extends Component {
     render() {
         
-        console.log(this.props.subjects)
+        const subjects = this.props.subjects
         
         return (
             <div>
-                <p>Subject List</p>
+                {
+                    subjects && subjects.map(
+                        (subject) => {
+                            return(
+                                <div key={subject.subjectcode}>
+                                    <NavLink key={subject.id} to={'subject/' + subject.subjectcode}>{subject.subjectname}</NavLink>
+                                    <br/>
+                                </div>
+                                
+                            )
+                        }
+                    )
+                }
             </div>
         )
     }

@@ -2,14 +2,26 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { connect } from 'react-redux';
+import Student from './Student'
 
 class StudentList extends Component {
     
     render() {
-        console.log(this.props.students)
+        const students = this.props.students
+        
         return (
             <div>
-                <p>Student List</p>
+                {
+                    students && students.map(
+                        (student) => {
+                            return(
+                                <div>
+                                    <Student key={student.idno} student={student}/>
+                                </div>
+                            )
+                        }
+                    )
+                }
             </div>
         );
     }
@@ -31,7 +43,7 @@ firestoreConnect(
             {
                 collection:'admins',
                 doc:props.adminId,
-                subcollections:[{collection:'students'}],
+                subcollections:[{collection:'students'}],   
                 storeAs:'faculties'
 
             }

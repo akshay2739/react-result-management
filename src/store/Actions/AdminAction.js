@@ -11,7 +11,7 @@ export const addFacultyAction = (creds,uid) => {
             () => {
                 console.log('faculty added')
                 firestore.collection('faculties').doc(creds.email).set({
-
+                    
                 })
                 //console.log('faculty added',docRef.id)
             }

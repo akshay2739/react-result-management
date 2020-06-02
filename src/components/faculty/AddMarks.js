@@ -1,17 +1,21 @@
 import React from 'react'
 
-export default function AddMarks(props) {
+export default function AddMarks() {
     return (
-        <div className="mt-2  w-50 mx-auto">
-            <div className=" p-2 d-flex w-100 justify-content-between mx-auto mb-2">
-                <label>ID </label>
-                <p>{props.student.id}</p>
-                <label >Name</label>
-                <p>{props.student.name}</p>
-                <label>Mark</label>
-                <input type="text" />
+        <div className="w-50 mx-auto shadow-lg mt-5 d-flex justify-content-center">
+                <form className="p-1 w-50 " onSubmit = {this.handleSubmit}>
+                    <div className="form-group d-flex">
+                        <label>ID NO</label>  
+                        <p>{this.props.student.idno}</p>    
+                    </div>
+                    <div className="form-group">
+                        <label>marks</label>
+                        <input type="password" className="form-control" id="password" onChange={this.handleChange}/>
+                    </div>
+                    
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </form>
             </div>
-        </div>
        
     )
 }

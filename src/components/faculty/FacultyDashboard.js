@@ -6,6 +6,8 @@ import FacultyHome from './FacultyHome'
 import AddSubject from './AddSubject'
 import SubjectList from './SubjectList'
 import StudentList from './StudentList'
+import Subject from './Subject'
+import AddMarks from './AddMarks'
 import { connect } from 'react-redux'
 
 
@@ -26,6 +28,8 @@ const FacultyDashboard = (props) => {
                         <Route path={path+'/addsubject'} component={AddSubject} />
                         <Route path={path+'/subjectlist'} component={SubjectList} />
                         <Route path={path+'/studentlist'} component={StudentList}  />
+                        <Route path={path+'/subject/:subjectcode'} component={Subject}  />
+                        <Route path={path+'/addmarks'} component={AddMarks} />
                     </Switch>
             </div> 
         )
